@@ -2,7 +2,7 @@ var React = require('react')
 var PropTypes = React.PropTypes
 var transparentBg = require('../styles').transparentBg
 
-// functional stateless components
+// functional stateless (presentational) component
 function Prompt (props) {
   return (
     <div className="jumbotron col-sm-6 col-sm-offset-3 text-center" style={transparentBg}>
@@ -30,6 +30,7 @@ function Prompt (props) {
   )
 }
 
+// document the props that get parsed into this stateless functional component
 Prompt.propTypes = {
   header: PropTypes.string.isRequired,
   onSubmitUser: PropTypes.func.isRequired,

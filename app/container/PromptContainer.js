@@ -1,6 +1,8 @@
+// this is a stateful component
 var React = require('react')
 var Prompt = require('../components/Prompt')
 
+// Stateful component
 var PromptContainer = React.createClass({
   contextTypes: {
     router: React.PropTypes.object.isRequired
