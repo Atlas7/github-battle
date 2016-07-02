@@ -1,10 +1,17 @@
 var React = require('react')
 
 function ConfirmBattle(props) {
+  console.log('ConfirmBattle Component')
   return (
-    <div>
-      <div>*** ConfirmBattle Component ***</div>
-    </div>
+    (props.isLoading === true) ? (
+      <div>
+        <p> LOADING! </p>
+      </div>
+    ) : (
+      <div>
+        <p> CONFIRM BATTLE! </p>
+      </div>
+    )
   )
 }
 

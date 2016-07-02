@@ -39,17 +39,15 @@ var PromptContainer = React.createClass({
 
   },
   render: function(){
+    console.log('Prompt Container')
     console.log(this)
     return (
-      <div>
-        <div>*** Prompt Container ***</div>
-        <Prompt
-        onSubmitUser={this.handleSubmitUser}
-        onUpdateUser={this.handleUpdateUser}
-        header={this.props.route.header}
-        username={this.state.username}
-        />
-      </div>
+      <Prompt
+      onSubmitUser={this.handleSubmitUser}
+      onUpdateUser={this.handleUpdateUser}
+      header={this.props.route.header}
+      username={this.state.username}
+      />
     )
   }
 })
