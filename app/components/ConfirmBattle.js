@@ -1,15 +1,19 @@
 var React = require('react')
 
+function puke(object) {
+  return <pre>{JSON.stringify(object, null, ' ')}</pre>
+}
+
 function ConfirmBattle(props) {
   console.log('ConfirmBattle Component')
   return (
     (props.isLoading === true) ? (
       <div>
-        <p> LOADING! </p>
+        LOADING!
       </div>
     ) : (
       <div>
-        <p> CONFIRM BATTLE! </p>
+        CONFIRM BATTLE!: {puke(props)}
       </div>
     )
   )
