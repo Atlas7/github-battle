@@ -5,6 +5,7 @@ var Link = ReactRouter.Link
 
 var Home = React.createClass({
   render: function() {
+    console.log('Home Component')
     return (
       <div>
         <div className='jumbotron col-sm-12 text-center' style={transparentBg}>
