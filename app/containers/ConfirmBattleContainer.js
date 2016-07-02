@@ -19,11 +19,14 @@ var ConfirmBattleContainer = React.createClass({
   componentDidMount: function() {
     console.log('componentDidMount')
     var query = this.props.location.query
+    // Fetch info from GitHub then update state
     githubHelpers.getPlayersInfo([
       query.playerOne,
       query.playerTwo
-    ])
-    // Fetch info from GitHub then update state
+    ]).then(function(players){
+      console.log('PLAYERS', players)
+    })
+
   },
   componentWillReceiveProps: function() {
     console.log('componentWillReceiveProps')
