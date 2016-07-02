@@ -21,6 +21,8 @@ var helpers = {
       return info.map(function(user){
         return user.data
       })
+    }).catch(function(err){
+      console.warn('Error in getPlayersInfo', err)
     })
   }
 }

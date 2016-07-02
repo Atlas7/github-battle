@@ -25,7 +25,11 @@ var ConfirmBattleContainer = React.createClass({
       query.playerTwo
     ]).then(function(players){
       console.log('PLAYERS', players)
-    })
+      this.setState({
+        isLoading: false,
+        playersInfo: [players[0], players[1]]
+      })
+    }.bind(this))
 
   },
   componentWillReceiveProps: function() {
