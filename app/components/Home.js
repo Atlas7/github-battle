@@ -7,6 +7,7 @@ var Home = React.createClass({
   render: function() {
     return (
       <div>
+        <div>*** Home Component ***</div>
         <div className='jumbotron col-sm-12 text-center' style={transparentBg}>
           <h1>Github battle</h1>
           <p className="lead">Some fancy motto</p>

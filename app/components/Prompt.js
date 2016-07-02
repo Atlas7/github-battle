@@ -6,10 +6,11 @@ var transparentBg = require('../styles').transparentBg
 function Prompt (props) {
   return (
     <div className="jumbotron col-sm-6 col-sm-offset-3 text-center" style={transparentBg}>
+      <div>*** Prompt Component ***</div>
       <h1>{props.header}</h1>
       <div className="col-sm-12">
         <form onSubmit={props.onSubmitUser}>
-          <div className="form-group">
+         <div className="form-group">
             <input
               className="form-control"
               placeholder="Github Username"
