@@ -11,7 +11,7 @@ var Loading = require('./Loading')
 //   return <pre>{JSON.stringify(object, 2, ' ')}</pre>
 // }
 
-function StartOver() {
+function StartOver () {
   return (
     <div className="col-sm-12" style={styles.space}>
       <Link to="/playerOne" >
@@ -34,7 +34,7 @@ function Results (props) {
     return (
       <MainContainer>
         <h1>It's a tie!</h1>
-        <startOver />
+        <StartOver />
       </MainContainer>
     )
   }
@@ -53,7 +53,7 @@ function Results (props) {
           <UserDetails score={props.scores[losingIndex]} info={props.playersInfo[losingIndex]} />
         </UserDetailsWrapper>
       </div>
-      <startOver />
+      <StartOver />
     </MainContainer>
   )
 }

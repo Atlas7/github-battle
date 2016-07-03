@@ -1,12 +1,12 @@
 var React = require('react')
 var PropTypes = React.PropTypes
-var transparentBg = require('../styles').transparentBg
+var styles = require('../styles')
 
 // functional stateless (presentational) component
 function Prompt (props) {
   // console.log('Prompt Component')
   return (
-    <div className="jumbotron col-sm-6 col-sm-offset-3 text-center" style={transparentBg}>
+    <div className="jumbotron col-sm-6 col-sm-offset-3 text-center" style={styles.transparentBg}>
       <h1>{props.header}</h1>
       <div className="col-sm-12">
         <form onSubmit={props.onSubmitUser}>
