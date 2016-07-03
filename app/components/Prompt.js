@@ -20,7 +20,7 @@ function Prompt (props) {
           </div>
           <div className="form-group col-sm-4 col-sm-offset-4">
             <button
-              class="btn btn-block btn-success"
+              className="btn btn-block btn-success"
               type="submit">
               continue
             </button>
