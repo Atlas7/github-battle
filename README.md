@@ -90,3 +90,8 @@ npm run production
 This will update `dist/index.html` and `dist/index_bundle.js` (minimized production version) - essentially your core web app production files.
 
 Open the actual `dist/index.html` file (via Mac Finder) to start playing with the single page web app!
+
+# References
+
+Check out this more (original and) comprehensive [React-Fundamentals GitHub repository](https://github.com/ReactjsProgram/React-Fundamentals).
+
