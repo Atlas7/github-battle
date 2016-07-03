@@ -22,5 +22,4 @@ var routes = (
   </Router>
 );
 
-
 module.exports = routes
