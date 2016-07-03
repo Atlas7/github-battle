@@ -1,12 +1,11 @@
 var React = require('react')
-var Router = require('react-router')
+var Link = require('react-router').Link
 var PropTypes = React.PropTypes
-var Link = Router.Link
+var styles = require('../styles')
 var UserDetails = require('./UserDetails')
 var UserDetailsWrapper = require('./UserDetailsWrapper')
 var MainContainer = require('./MainContainer')
-
-var styles = require('../styles')
+var Loading = require('./Loading')
 
 
 function puke(object) {
@@ -17,7 +16,7 @@ function ConfirmBattle(props) {
   // console.log('ConfirmBattle Component')
   return (
     (props.isLoading === true) ? (
-      <p>LOADING!</p>
+      <Loading speed={100} text="Confirming Battle"/>
     ) : (
       <MainContainer>
         {/* CONFIRM BATTLE!: {puke(props)} */}
