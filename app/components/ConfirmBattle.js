@@ -13,7 +13,7 @@ function puke(object) {
 }
 
 function ConfirmBattle(props) {
-  console.log('ConfirmBattle Component')
+  // console.log('ConfirmBattle Component')
   return (
     (props.isLoading === true) ? (
       <p>LOADING!</p>
