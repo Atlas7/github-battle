@@ -1,44 +1,28 @@
-var React = require('react')
-var ConfirmBattle = require('../components/ConfirmBattle')
-var githubHelpers = require('../utils/githubHelpers')
+import React from 'react'
+import ConfirmBattle from '../components/ConfirmBattle'
+import { getPlayersInfo } from '../utils/githubHelpers'
 
-var ConfirmBattleContainer = React.createClass({
+const ConfirmBattleContainer = React.createClass({
   contextTypes: {
     router: React.PropTypes.object.isRequired
   },
-  getInitialState: function() {
-    console.log('getInitialState')
+  getInitialState: function () {
     return {
       isLoading: true,
-      playersInfo: []
+      playersInfo: [],
     }
   },
-  componentWillMount: function() {
-    console.log('componentWillMount')
+  componentDidMount: function () {
+    const { query } = this.props.location
+    getPlayersInfo([query.playerOne, query.playerTwo])
+      .then(function (players) {
+        this.setState({
+          isLoading: false,
+          playersInfo: [players[0], players[1]]
+        })
+      }.bind(this))
   },
-  componentDidMount: function() {
-    console.log('componentDidMount')
-    var query = this.props.location.query
-    // Fetch info from GitHub then update state
-    githubHelpers.getPlayersInfo([
-      query.playerOne,
-      query.playerTwo
-    ]).then(function(players){
-      console.log('PLAYERS', players)
-      this.setState({
-        isLoading: false,
-        playersInfo: [players[0], players[1]]
-      })
-    }.bind(this))
-
-  },
-  componentWillReceiveProps: function() {
-    console.log('componentWillReceiveProps')
-  },
-  componentWillUnmount: function() {
-    console.log('componentWillUnmount')
-  },
-  handleInitiatebattle: function() {
+  handleInitiateBattle: function () {
     this.context.router.push({
       pathname: '/results',
       state: {
@@ -46,17 +30,14 @@ var ConfirmBattleContainer = React.createClass({
       }
     })
   },
-  render: function() {
-    console.log('ConfirmBattle Container')
-    console.log(this)
+  render: function () {
     return (
       <ConfirmBattle
         isLoading={this.state.isLoading}
-        playersInfo={this.state.playersInfo}
-        onInitiateBattle={this.handleInitiatebattle}
-      />
+        onInitiateBattle={this.handleInitiateBattle}
+        playersInfo={this.state.playersInfo} />
     )
   }
-})
+});
 
-module.exports = ConfirmBattleContainer
+export default ConfirmBattleContainer
