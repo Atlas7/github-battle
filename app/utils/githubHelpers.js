@@ -1,9 +1,8 @@
 // fetch some data from GitHub
-var axios = require('axios')
-var gitHubAPIConfig = require('../../secrets/githubAPIConfig')
-var id = gitHubAPIConfig.id
-var sec = gitHubAPIConfig.secret
-var param = "?client_id=" + id + "&client_secret=" + sec
+import axios from 'axios'
+import { id, secret } from '../secrets/githubAPIConfig'
+
+const param = "?client_id=" + id + "&client_secret=" + secret
 
 // Promises here
 
@@ -47,29 +46,22 @@ function calculateScores(players) {
 }
 
 // core module here
-var helpers = {
-  getPlayersInfo: function(players) {
-    return axios.all(
-      players.map(function(username){
-        return getUserInfo(username)
-      })
-    ).then(function(info){
-      console.log(info)
-      return info.map(function(user){
+export function getPlayersInfo (players) {
+  return axios.all(players.map(function (username) {
+    return getUserInfo(username)
+  }))
+    .then(function (info) {
+      return info.map(function (user) {
         return user.data
       })
-    }).catch(function(err){
-      console.warn('Error in getPlayersInfo', err)
     })
-  },
-  battle: function(players) {
-    var playerOneData = getPlayersData(players[0])
-    var playerTwoData = getPlayersData(players[1])
-
-    return axios.all([playerOneData, playerTwoData])
-      .then(calculateScores)
-      .catch(function(err) {console.warn('Error in battle: ', err)})
-  }
+    .catch(function (err) {console.warn('Error in getPlayersInfo: ', err)})
 }
 
-module.exports = helpers
+export function battle (players) {
+  const playerOneData = getPlayersData(players[0]);
+  const playerTwoData = getPlayersData(players[1]);
+  return axios.all([playerOneData, playerTwoData])
+    .then(calculateScores)
+    .catch(function (err) {console.warn('Error in getPlayersInfo: ', err)})
+}

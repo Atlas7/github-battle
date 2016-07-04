@@ -1,12 +1,12 @@
-var React = require('react')
-var styles = require('../styles')
+import React from 'react'
+import { transparentBg } from '../styles'
 
-var MainContainer= function(props) {
+const MainContainer = function(props) {
   return (
-    <div className="jumbotron col-sm-12 text-center" style={styles.transparentBg}>
+    <div className="jumbotron col-sm-12 text-center" style={transparentBg}>
       {props.children}
     </div>
   )
 }
 
-module.exports = MainContainer
+export default MainContainer

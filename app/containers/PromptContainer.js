@@ -1,55 +1,48 @@
-// this is a stateful component
-var React = require('react')
-var Prompt = require('../components/Prompt')
+import React from 'react'
+import Prompt from '../components/Prompt'
 
-// Stateful component
-var PromptContainer = React.createClass({
+const PromptContainer = React.createClass({
   contextTypes: {
     router: React.PropTypes.object.isRequired
   },
-  getInitialState: function() {
+  getInitialState: function () {
     return {
       username: ''
     }
   },
-  handleUpdateUser: function(event) {
-    this.setState({
-      username: event.target.value
-    })
-  },
-  handleSubmitUser: function(event) {
-    event.preventDefault()
-    var username = this.state.username
+  handleSubmitUser: function (e) {
+    e.preventDefault();
+    const { username } = this.state
     this.setState({
       username: ''
-    })
+    });
+
     if (this.props.routeParams.playerOne) {
-      //  go to battle
       this.context.router.push({
         pathname: '/battle',
         query: {
           playerOne: this.props.routeParams.playerOne,
-          playerTwo: this.state.username
+          playerTwo: username,
         }
       })
     } else {
-      // go to /playerTwo
-      this.context.router.push('/playerTwo/' + this.state.username)
+      this.context.router.push('/playerTwo/' + username)
     }
-
   },
-  render: function(){
-    console.log('Prompt Container')
-    console.log(this)
+  handleUpdateUser: function (event) {
+    this.setState({
+      username: event.target.value
+    });
+  },
+  render: function () {
     return (
       <Prompt
-      onSubmitUser={this.handleSubmitUser}
-      onUpdateUser={this.handleUpdateUser}
-      header={this.props.route.header}
-      username={this.state.username}
-      />
+        onSubmitUser={this.handleSubmitUser}
+        onUpdateUser={this.handleUpdateUser}
+        header={this.props.route.header}
+        username={this.state.username} />
     )
   }
-})
+});
 
-module.exports = PromptContainer
+export default PromptContainer
