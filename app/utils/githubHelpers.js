@@ -6,15 +6,13 @@ const param = `?client_id=${id}&client_secret=${secret}`
 
 // Promises here
 
-const defaultUsername = `atlas7`
-
 // fetch Github user info
-function getUserInfo(username = defaultUsername  ) {
+function getUserInfo(username) {
   return axios.get(`https://api.github.com/users/${username + param}`)
 }
 
 // fetch Github usernames repos
-function getRepos(username = defaultUsername ) {
+function getRepos(username) {
   return axios.get(`https://api.github.com/users/${username}/repos${param}&per_page=100`)
 }
 
