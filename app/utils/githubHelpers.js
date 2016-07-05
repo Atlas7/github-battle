@@ -2,18 +2,20 @@
 import axios from 'axios'
 import { id, secret } from '../secrets/githubAPIConfig'
 
-const param = "?client_id=" + id + "&client_secret=" + secret
+const param = `?client_id=${id}&client_secret=${secret}`
 
 // Promises here
 
+const defaultUsername = `atlas7`
+
 // fetch Github user info
-function getUserInfo(username) {
-  return axios.get('https://api.github.com/users/' + username + param)
+function getUserInfo(username = defaultUsername  ) {
+  return axios.get(`https://api.github.com/users/${username + param}`)
 }
 
 // fetch Github usernames repos
-function getRepos(username) {
-  return axios.get('https://api.github.com/users/' + username + '/repos'+ param + '&per_page=100')
+function getRepos(username = defaultUsername ) {
+  return axios.get(`https://api.github.com/users/${username}/repos${param}&per_page=100`)
 }
 
 // calculate all the stars that the user has
@@ -26,15 +28,13 @@ function getTotalStars(repos) {
 // getRepos
 // getTotalStars
 // return object with that data
-function getPlayersData(player) {
-  return getRepos(player.login)
+function getPlayersData({login, followers}) {
+  return getRepos(login)
     .then(getTotalStars)
-    .then(function(totalStars) {
-      return {
-        followers: player.followers,
-        totalStars: totalStars
-      }
-    })
+    .then((totalStars) => ({
+        followers,
+        totalStars
+    }))
 }
 
 // return an array, after doing some fancy algorithms to determine a winner
@@ -47,14 +47,8 @@ function calculateScores(players) {
 
 // core module here
 export function getPlayersInfo (players) {
-  return axios.all(players.map(function (username) {
-    return getUserInfo(username)
-  }))
-    .then(function (info) {
-      return info.map(function (user) {
-        return user.data
-      })
-    })
+  return axios.all(players.map((username) => getUserInfo(username)))
+    .then((info) => info.map((user) => user.data))
     .catch(function (err) {console.warn('Error in getPlayersInfo: ', err)})
 }
 
@@ -63,5 +57,5 @@ export function battle (players) {
   const playerTwoData = getPlayersData(players[1]);
   return axios.all([playerOneData, playerTwoData])
     .then(calculateScores)
-    .catch(function (err) {console.warn('Error in getPlayersInfo: ', err)})
+    .catch((err) => {console.warn('Error in getPlayersInfo: ', err)})
 }
