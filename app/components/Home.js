@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 import MainContainer from './MainContainer'
 
 var Home = React.createClass({
-  render: function() {
+  render () {
     // console.log('Home Component')
     return (
       <div>

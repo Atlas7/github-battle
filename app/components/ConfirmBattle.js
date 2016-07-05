@@ -10,28 +10,28 @@ function puke(object) {
   return <pre>{JSON.stringify(object, null, ' ')}</pre>
 }
 
-function ConfirmBattle(props) {
+function ConfirmBattle({isLoading, playersInfo, onInitiateBattle}) {
   // console.log('ConfirmBattle Component')
   return (
-    (props.isLoading === true) ? (
+    (isLoading === true) ? (
       <Loading speed={100} text="Confirming Battle"/>
     ) : (
       <MainContainer>
-        {/* CONFIRM BATTLE!: {puke(props)} */}
+        {/* CONFIRM BATTLE!: {puke({isLoading, playersInfo, onInitiateBattle})} */}
         <h1>Confirm Players</h1>
         <div className="col-sm-8 col-sm-offset-2">
           <UserDetailsWrapper header="Player 1">
-            {/* puke(props.playersInfo[0]) */}
-            <UserDetails info={props.playersInfo[0]} />
+            {/* puke(playersInfo[0]) */}
+            <UserDetails info={playersInfo[0]} />
           </UserDetailsWrapper>
           <UserDetailsWrapper header="Player 2">
-            {/* puke(props.playersInfo[0]) */}
-            <UserDetails info={props.playersInfo[1]} />
+            {/* puke(playersInfo[0]) */}
+            <UserDetails info={playersInfo[1]} />
           </UserDetailsWrapper>
         </div>
         <div className="col-sm-8 col-sm-offset-2">
           <div className="col-sm-12" style={space}>
-            <button className="btn btn-lg btn-success" onClick={props.onInitiateBattle}>
+            <button className="btn btn-lg btn-success" onClick={onInitiateBattle}>
               Initiate Battle!
             </button>
           </div>
