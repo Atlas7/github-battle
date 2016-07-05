@@ -26,7 +26,7 @@ const PromptContainer = React.createClass({
         }
       })
     } else {
-      this.context.router.push('/playerTwo/' + username)
+      this.context.router.push(`/playerTwo/${username}`)
     }
   },
   handleUpdateUser: function (event) {
