@@ -1,13 +1,16 @@
 {
   "name": "github-battle",
   "version": "1.0.0",
-  "description": "",
+  "description": "A ES5 style web app that compares two GitHub user profile and determine who the winner is based on stats.",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server",
     "production": "webpack -p"
   },
-  "repository": "https://github.com/Atlas7/github-battle.git",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Atlas7/github-battle.git"
+  },
   "author": "Johnny Chan",
   "license": "ISC",
   "dependencies": {
