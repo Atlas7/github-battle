@@ -7,6 +7,7 @@
     "start": "webpack-dev-server",
     "production": "webpack -p"
   },
+  "repository": "https://github.com/Atlas7/github-battle.git",
   "author": "Johnny Chan",
   "license": "ISC",
   "dependencies": {
