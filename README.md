@@ -1,6 +1,6 @@
 A web app that compares two github user profile and determine who the winner is based on stats.
 
-The output is based on the GitHub Battle Project originated from the [ReactJS Fundmental course](http://courses.reactjsprogram.com/courses/reactjsfundamentals) by [@tylermcginnis](https://github.com/tylermcginnis) - I did not "invent" this web app but this does demonstrate the tech that I have worked with (and learn from).
+The output is based on the GitHub Battle Project originated from the [ReactJS Fundmental course](http://courses.reactjsprogram.com/courses/reactjsfundamentals) by [@tylermcginnis](https://github.com/tylermcginnis) - I did not "invent" this web app but this does demonstrate the tech that I have worked with (and learnt from).
 
 Notes:
 
